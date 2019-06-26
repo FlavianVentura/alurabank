@@ -1,6 +1,6 @@
-class Negociacao{
+class Negociacao {
 
-    constructor(private _data: Date, private _quantidade: number, private _valor: number){}
+    constructor( private _data: Date, private _quantidade: number, private _valor: number){}
 
     get data(){
 
@@ -11,6 +11,7 @@ class Negociacao{
 
         return this._quantidade;
     }
+
     get valor(){
 
         return this._valor;
