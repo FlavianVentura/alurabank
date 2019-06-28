@@ -1,16 +1,20 @@
-class NegociacaoController {
+import { MensagemView } from './../views/MensagemView';
+import { Negociacoes } from '../models/Negociacoes';
+import { NegociacaoView } from '../views/NegociacaoView';
+import { Negociacao } from '../models/Negociacao';
+export class NegociacaoController {
     constructor() {
         this._negociacoes = new Negociacoes();
         this._negociacoesView = new NegociacaoView('#negociacoesView');
         this._mensagemView = new MensagemView('#mensagemView');
-        this._inputData = document.querySelector('#data');
-        this._inputQuantidade = document.querySelector('#quantidade');
-        this._inputValor = document.querySelector('#valor');
+        this._inputData = $('#data');
+        this._inputQuantidade = $('#quantidade');
+        this._inputValor = $('#valor');
         this._negociacoesView.update(this._negociacoes);
     }
     adiciona(event) {
         event.preventDefault();
-        const negociacao = new Negociacao(new Date(this._inputData.value.replace(/-/g, ',')), parseInt(this._inputQuantidade.value), parseFloat(this._inputValor.value));
+        const negociacao = new Negociacao(new Date(this._inputData.val().replace(/-/g, ',')), parseInt(this._inputQuantidade.val()), parseFloat(this._inputValor.val()));
         this._negociacoes.adiciona(negociacao);
         this._negociacoesView.update(this._negociacoes);
         this._mensagemView.update('Negociação adicionada com sucesso!!!');
